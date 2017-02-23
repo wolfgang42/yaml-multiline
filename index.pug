@@ -1,0 +1,143 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		title YAML Multiline
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css" integrity="sha256-E3NFAdoEdCZvMUGANNJ8cM/gRzIO+9Tx9QGCCzYHquw=" crossorigin="anonymous")
+		style(type="text/css").
+			.hero-body {margin-left: 2em; margin-right: 2em;}
+			.control label.radio {display:block;}
+			.radio {margin-left: 0.5em;}
+			.pre-header { font-weight: 100; font-size: large; }
+			a {color: #0099cf;}
+			a:visited {color: #cf4fcf;}
+			a:hover {text-decoration: underline;}
+			span.whitespace {color: lightgray;}
+			/* TODO noto mono */
+			pre {background-color: white; font-size: 1em; font-family: "Consolas", "Inconsolata", "Monaco", "Ubuntu Mono", monospace;}
+			@keyframes yellowfade {
+				from { background: yellow; }
+				to { background: transparent; }
+			}
+			.when-literal,
+			.when-folded,
+			.when-strip,
+			.when-clip,
+			.when-keep,
+			#indent-indication {
+				display:none;
+				animation-name: yellowfade;
+				animation-duration: 1.5s;
+			}
+			.yaml-literal .when-literal,
+			.yaml-folded .when-folded,
+			.yaml-strip .when-strip,
+			.yaml-clip .when-clip,
+			.yaml-keep .when-keep,
+			.yaml-indicate-indent #indent-indication {
+				display: inline;
+			}
+	body.yaml-literal.yaml-strip
+		header.hero.is-primary.is-bold: .hero-body
+			h1.title YAML Multiline
+		
+		.columns(style="margin: 2em")
+			form.column.is-one-half#control-form
+				b Block Scalar Style (#[a(href="http://www.yaml.org/spec/1.2/spec.html#id2795688") ?])
+				.control
+					label.radio
+						input(type="radio" name="blockstyle" value="folded" checked)
+						| Replace newlines with spaces #[em (folded)]
+					label.radio
+						input(type="radio" name="blockstyle" value="literal")
+						| Keep newlines #[em (literal)]
+				b Block Chomping (#[a(href="http://www.yaml.org/spec/1.2/spec.html#id2794534") ?])
+				.control
+					label.radio
+						input(type="radio" name="chomping" value="clip" checked)
+						| Single line break at end #[em (clip)]
+					label.radio
+						input(type="radio" name="chomping" value="strip")
+						| No line break at end #[em (strip)]
+					label.radio
+						input(type="radio" name="chomping" value="keep")
+						| All line breaks at end #[em (keep)]
+				b Indentation
+				div(style="margin-left:0.5em")
+					div
+						='Indent by '
+						input(type="number" name="indent" min=1 max=9 step=1 value=2 style="width:4em")
+						=' spaces'
+					.control(style="margin-top:.25em")
+						label.checkbox
+							input(type="checkbox" name="indicateIndent")
+							| Include indentation indicator
+					p.
+						YAML will ordinarily autodetect the indentation used based on the first line of the block.
+						A #[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2793979") block indentation indicator]
+						may be necessary if the first line of the block starts with spaces.
+						
+				.notification(style="margin-top:3em").
+					In addition to the block styles shown here, there are also three
+					#[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2786942") flow scalar styles]
+					(single-quoted, double-quoted, and plain (unquoted)),
+					which also support multiple lines.
+				// TODO quoting
+			.column.is-one-half
+				.pre-header YAML
+				pre.
+					#[span(style="color:#268bd2") example:] #[strong #[span.when-literal |]#[span.when-folded >]#[span.when-strip -]#[span.when-keep +]#[span#indent-indication]]#[span.whitespace \n]
+					#[span.whitespace.indent ··]Several lines of text,#[span.whitespace \n]
+					#[span.whitespace.indent ··]with some "quotes" of various 'types',#[span.whitespace \n]
+					#[span.whitespace.indent ··]and also a blank line:#[span.whitespace \n]
+					#[span.whitespace.indent ··]#[span.whitespace \n]
+					#[span.whitespace.indent ··]plus another line at the end.#[span.whitespace \n]
+					#[span.whitespace.indent ··]#[span.whitespace \n]
+					#[span.whitespace.indent ··]#[span.whitespace \n]
+				.pre-header(style="margin-top: 2em") Result
+				pre(style="white-space:pre-wrap")
+					mixin w
+						span.whitespace&attributes(attributes)='\\n\n'
+					mixin literal-n
+						span.when-literal: +w
+					mixin literal-n-space
+						+literal-n
+						span.when-folded=' '
+					| Several lines of text,#[+literal-n-space]with some "quotes" of various 'types',#[+literal-n-space]and also a blank line:#[+literal-n]#[+w]plus another line at the end.#[+w.when-keep.when-clip]#[+w.when-keep]#[+w.when-keep]
+		script.
+			(function() {
+				var form = document.getElementById('control-form')
+				var indentIndication = document.getElementById('indent-indication')
+				function updateDisplay() {
+					['literal', 'folded', 'clip', 'strip', 'keep', 'indicate-indent'].forEach(function(cls) {
+						document.body.classList.remove('yaml-'+cls)
+					})
+					document.body.classList.add('yaml-'+form.elements.chomping.value)
+					document.body.classList.add('yaml-'+form.elements.blockstyle.value)
+					if (form.elements.indicateIndent.checked) {
+						document.body.classList.add('yaml-indicate-indent')
+					}
+					indentIndication.innerHTML = form.elements.indent.value
+					var indents = document.getElementsByClassName('indent')
+					var indentation = '·'.repeat(form.elements.indent.value)
+					for (var i = 0; i < indents.length; i++) {
+						indents[i].innerHTML = indentation
+					}
+				}
+				form.addEventListener('change', updateDisplay)
+				updateDisplay()
+			})()
+		//- Piwik
+			script(type="text/javascript").
+				var _paq = _paq || [];
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
+				(function() {
+					var u="//analytics.linestarve.com/";
+					_paq.push(['setTrackerUrl', u+'piwik.php']);
+					_paq.push(['setSiteId', '4']);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+				})();
+			<noscript><p><img src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="" /></p></noscript>
+	
