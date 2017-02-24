@@ -21,7 +21,7 @@ html
 		script
 			include polyfills.js
 			include script.js
-		//- Piwik
+		if production
 			script(type="text/javascript").
 				var _paq = _paq || [];
 				_paq.push(['trackPageView']);
@@ -33,5 +33,5 @@ html
 					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
 					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 				})();
-			<noscript><p><img src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="" /></p></noscript>
+			noscript: p: img(src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="")
 	

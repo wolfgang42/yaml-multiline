@@ -1,0 +1,13 @@
+{
+  "name": "yaml-multiline",
+  "private": true,
+  "description": "Find the right syntax for your YAML multiline strings",
+  "dependencies": {
+    "pug-cli": "^1.0.0-alpha6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "watch": "pug -w index.pug",
+    "deploy": "pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/var/www/yaml-multiline.info/"
+  }
+}
