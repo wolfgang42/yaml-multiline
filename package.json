@@ -3,6 +3,7 @@
   "private": true,
   "description": "Find the right syntax for your YAML multiline strings",
   "dependencies": {
+    "jstransformer-uglify-js": "^1.1.1",
     "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {},

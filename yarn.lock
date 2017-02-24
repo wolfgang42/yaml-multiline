@@ -169,6 +169,12 @@ js-stringify@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/js-stringify/-/js-stringify-1.0.2.tgz#1736fddfd9724f28a3682adc6230ae7e4e9679db"
 
+jstransformer-uglify-js@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/jstransformer-uglify-js/-/jstransformer-uglify-js-1.1.1.tgz#1791b7689181d251fa4314d622c2307eaaabf740"
+  dependencies:
+    uglify-js "^2.6.1"
+
 jstransformer@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/jstransformer/-/jstransformer-1.0.0.tgz#ed8bf0921e2f3f1ed4d5c1a44f68709ed24722c3"

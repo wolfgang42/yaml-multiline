@@ -19,7 +19,8 @@ html
 			.subtitle Find the right syntax for your YAML multiline strings
 		.columns(style="margin: 2em"): include content.pug
 		script
-			include polyfills.js
+			include:uglify-js polyfills.js
+			='\n'
 			include script.js
 		if production
 			script(type="text/javascript").
