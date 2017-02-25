@@ -35,4 +35,20 @@ html
 					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 				})();
 			noscript: p: img(src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="")
-	
+		footer.footer: .container: .content.has-text-centered
+			| &copy; 2017 #[a(href="http://www.linestarve.com/") Wolfgang Faust]
+			| &bull; Thanks to #[a(href="http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines/21699210#21699210") Steve Bennett]
+			br
+			a(href='https://github.com/wolfgang42/yaml-multiline')
+				//- This data URI is github-64.png.
+				//- I embed it because the image is so small that the overhead
+				//- of a separate request would completely swamp the actual data.
+				//- This is a horribly excessive micro-optimiziation,
+				//- but I had fun doing it.
+				img(
+					width=16 height=16 alt="GitHub:"
+					style="vertical-align:middle"
+					src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAAMxJREFUKFOt0rFtBCEURdE7IiCkBEqhNCZzWyO5EbYDNiNAXAesPCvboYmOxH/iIQDIAwCCXgAk7QBUXQCovkb2UFRtQFYdQFGdO7RjumPHxnkjrKKzXsSVtNVGXEGv2kgToHTyD4wbZQHUeaPurfWGAZDfsO+UvuE/I4vjhfv038V250URwEnxguAk2yE5yB8LqoP86RW0kx6eh3bi0/PQRuyCNsIooBfHAPTkmC+wnwGogAsoD3Dulrt4FGxAEPYPEIQdmwAk6PyxvgA2bdfnuuNAlAAAAABJRU5ErkJggg=='
+					)
+				=' '
+				| wolfgang42/yaml-multiline
