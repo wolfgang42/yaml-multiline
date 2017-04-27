@@ -11,13 +11,13 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 	.control
 		label.radio
 			input(type="radio" name="chomping" value="clip" checked)
-			| Single line break at end #[em (clip)]
+			| Single newline at end #[em (clip)]
 		label.radio
 			input(type="radio" name="chomping" value="strip")
-			| No line break at end #[em (strip)]
+			| No newline at end #[em (strip)]
 		label.radio
 			input(type="radio" name="chomping" value="keep")
-			| All line breaks at end #[em (keep)]
+			| All newlines from end #[em (keep)]
 	b Indentation
 	div(style="margin-left:0.5em")
 		div
