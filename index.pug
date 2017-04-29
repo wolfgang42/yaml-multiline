@@ -4,7 +4,7 @@ html(lang="en")
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
-		title YAML Multiline
+		title YAML Multiline Strings
 		meta(name="description" content="Find the right syntax for your YAML multiline strings.")
 		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css" integrity="sha256-E3NFAdoEdCZvMUGANNJ8cM/gRzIO+9Tx9QGCCzYHquw=" crossorigin="anonymous")
 		style(type="text/css"): include style.css
@@ -16,8 +16,9 @@ html(lang="en")
 		link(rel="icon" type="image/png" href="/favicon-512.png" sizes="512x512")
 	body
 		header.hero.is-primary.is-bold: .hero-body
-			h1.title YAML Multiline
-			.subtitle Find the right syntax for your YAML multiline strings
+			h1
+				.title YAML Multiline
+				.subtitle Find the right syntax for your YAML multiline strings
 		main.section.container.content: include article.pug
 		script
 			include:uglify-js polyfills.js
@@ -38,8 +39,9 @@ html(lang="en")
 			noscript: p: img(src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="")
 		footer.footer: .container: .content.has-text-centered
 			| &copy; 2017 #[a(href="http://www.linestarve.com/") Wolfgang Faust]
-			| &bull; Thanks to #[a(href="http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines/21699210#21699210") Steve Bennett]
-			br
+			=' '
+			| &bull;
+			=' '
 			a(href='https://github.com/wolfgang42/yaml-multiline')
 				//- This data URI is github-64.png.
 				//- I embed it because the image is so small that the overhead
@@ -53,3 +55,4 @@ html(lang="en")
 					)
 				=' '
 				| wolfgang42/yaml-multiline
+			div(style="padding-top:.5em;") Thanks to #[a(href="http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines/21699210#21699210") Steve Bennett]
