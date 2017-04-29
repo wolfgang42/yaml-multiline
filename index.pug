@@ -18,7 +18,7 @@ html(lang="en")
 		header.hero.is-primary.is-bold: .hero-body
 			h1.title YAML Multiline
 			.subtitle Find the right syntax for your YAML multiline strings
-		main.columns(style="margin: 2em" role="main"): include content.pug
+		main.section.container.content: include article.pug
 		script
 			include:uglify-js polyfills.js
 			='\n'

@@ -28,17 +28,7 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 			label.checkbox
 				input(type="checkbox" name="indicateIndent")
 				| Include indentation indicator
-		p.
-			YAML will ordinarily autodetect the indentation used based on the first line of the block.
-			A #[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2793979") block indentation indicator]
-			may be necessary if the first line of the block starts with spaces.
-			
-	.notification(style="margin-top:3em").
-		In addition to the block styles shown here, there are also three
-		#[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2786942") flow scalar styles]
-		(single-quoted, double-quoted, and plain (unquoted)),
-		which also support multiple lines.
-	//- TODO quoting
+
 .column.is-one-half
 	.pre-header YAML
 	pre.
@@ -51,7 +41,7 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 		#[span.whitespace.indent ··]#[span.whitespace \n]
 		#[span.whitespace.indent ··]#[span.whitespace \n]
 	.pre-header(style="margin-top: 2em") Result
-	pre(style="white-space:pre-wrap")
+	pre.pre-wrap
 		mixin w
 			span.whitespace&attributes(attributes)='\\n\n'
 		mixin literal-n

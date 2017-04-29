@@ -5,13 +5,19 @@
 a {color: #0099cf;}
 a:visited {color: #cf4fcf;}
 a:hover {text-decoration: underline;}
-span.whitespace {color: lightgray;}
+.whitespace {color: lightgray;}
+p { text-indent: -2em; margin-left: 2em; }
 /* TODO noto mono */
 pre {background-color: white; font-size: 1em; font-family: "Consolas", "Inconsolata", "Monaco", "Ubuntu Mono", monospace;}
+.pre-wrap {white-space: pre-wrap;}
 @keyframes yellowfade {
 	from { background: yellow; }
 	to { background: transparent; }
 }
+/* http://ethanschoonover.com/solarized */
+.syntax-keyword {color: #268bd2;}
+.syntax-escape {color: #dc322f; font-weight: bold;}
+
 .when-literal,
 .when-folded,
 .when-strip,

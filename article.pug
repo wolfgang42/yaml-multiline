@@ -1,0 +1,96 @@
+p.
+	There are two types of formats that YAML supports for strings: #[em block scalar] and #[em flow scalar] formats.
+	(#[em Scalars] are what #[abbr YAML] calls basic values like numbers or strings,
+	as opposed to complex types like arrays or objects.)
+	Block scalars have more control over how they are interpreted,
+	whereas flow scalars have more limited escaping support.
+h2.is-2#block-scalars Block Scalars
+p A block scalar header has three parts:
+p.
+	#[strong Block Style Indicator]: The #[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2795688") block style] indicates
+	how newlines inside the block should behave.
+	If you would like them to be kept as newlines, use the #[strong literal]
+	style, indicated by a pipe (#[code |]).
+	If instead you want them to be replaced by spaces, use the #[strong folded]
+	style, indicated by a right angle bracket (#[code >]).
+	(To get a newline using the folded style, leave a blank line by putting #[em two] newlines in.
+	Lines with extra indentation are also not folded.)
+p.
+	#[strong Block Chomping Indicator]:
+	The #[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2794534") chomping indicator] controls what should happen with newlines
+	at the #[em end] of the string.
+	The default, #[strong clip], puts a single newline at the end of the string.
+	To remove all newlines, #[strong strip] them by putting a minus sign (#[code -])
+	after the style indicator.
+	Both clip and strip ignore how many newlines are actually at the end of the block;
+	to #[strong keep] them all put a plus sign (#[code +]) after the style indicator.
+p.
+	#[strong Indentation Indicator]: Ordinarily, the number of spaces you're using to indent a block
+	will be automatically guessed from its first line.
+	You may need a #[em: a(href="http://www.yaml.org/spec/1.2/spec.html#id2793979") block indentation indicator]
+	if the first line of the block starts with extra spaces.
+	In this case, simply put the number of spaces used for indentation (between 1 and 9)
+	at the end of the header.
+
+h3.is-3 Demo
+.columns: include content.pug
+
+h2.is-2#flow-scalars Flow Scalars
+h3.is-3#flow-scalars-single Single-quoted
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span(style="color:#268bd2") example:] #[span.syntax-quote ']Several lines of text,#[span.whitespace \n]
+			containing #[span.syntax-escape '']single quotes#[span.syntax-escape '']. Escapes (like \n) don#[span.syntax-escape '']t do anything.#[span.whitespace \n]
+			#[span.whitespace \n]
+			Newlines can be added by leaving a blank line.#[span.whitespace \n]
+			#[span.whitespace ··]Leading whitespace on lines is ignored.#[span.syntax-quote ']#[span.whitespace \n]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			Several lines of text, containing 'single quotes'. Escapes (like \n) don't do anything.#[span.whitespace \n]
+			Newlines can be added by leaving a blank line. Leading whitespace on lines is ignored.
+h3.is-3#flow-scalars-double Double-quoted
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span.syntax-keyword example:] #[span.syntax-quote "]Several lines of text,#[span.whitespace \n]
+			containing #[span.syntax-escape \"]double quotes#[span.syntax-escape \"]. Escapes (like #[span.syntax-escape \\]n) work.#[span.syntax-escape \n]In addition,#[span.whitespace \n]
+			newlines can be esc#[span.syntax-escape &#x5C;]#[span.whitespace \n]
+			aped to prevent them from being converted to a space.#[span.whitespace \n]
+			#[span.whitespace \n]
+			Newlines can also be added by leaving a blank line.#[span.whitespace \n]
+			#[span.whitespace ··]Leading whitespace on lines is ignored.#[span.syntax-quote "]#[span.whitespace \n]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			Several lines of text, containing "double quotes". Escapes (like \n) work.#[span.whitespace \n]
+			In addition, newlines can be escaped to prevent them from being converted to a space.#[span.whitespace \n]
+			Newlines can also be added by leaving a blank line. Leading whitespace on lines is ignored.#[span.whitespace \n]
+h3.is-3#flow-scalars-plain Plain
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span.syntax-keyword example:] Several lines of text,#[span.whitespace \n]
+			#[span.whitespace ··]with some "quotes" of various 'types'.#[span.whitespace \n]
+			#[span.whitespace ··]Escapes (like \n) don't do anything.#[span.whitespace \n]
+			#[span.whitespace ··]#[span.whitespace \n]
+			#[span.whitespace ··]Newlines can be added by leaving a blank line.#[span.whitespace \n]
+			#[span.whitespace ····]Additional leading whitespace is ignored.#[span.whitespace \n]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			Several lines of text, with some "quotes" of various 'types'. Escapes (like \n) don't do anything.#[span.whitespace \n]
+			Newlines can be added by leaving a blank line. Additional leading whitespace is ignored.
+p.
+	#[em Note: ]
+	Plain flow scalars are picky about the #[code :] and #[code #] characters.
+	They can be in the string,
+	but #[code :] cannot appear #[em before] a space or newline,
+	and #[code #] cannot appear #[em after] a space or newline;
+	doing this will cause a syntax error.
+	If you need to use these characters you are probably better off
+	using one of the quoted styles instead.
