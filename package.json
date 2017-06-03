@@ -9,6 +9,6 @@
   "devDependencies": {},
   "scripts": {
     "watch": "pug -w index.pug",
-    "deploy": "pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/var/www/yaml-multiline.info/"
+    "deploy": "pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
   }
 }
