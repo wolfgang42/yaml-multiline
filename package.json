@@ -3,12 +3,23 @@
   "private": true,
   "description": "Find the right syntax for your YAML multiline strings",
   "dependencies": {
+    "bulma": "0.3.1",
     "jstransformer-uglify-js": "^1.1.1",
-    "pug-cli": "^1.0.0-alpha6"
+    "nodemon": "^1.11.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "redrun": "^5.9.16",
+    "uglifycss": "^0.0.27",
+    "uncss": "^0.15.0"
   },
   "devDependencies": {},
   "scripts": {
-    "watch": "pug -w index.pug",
-    "deploy": "pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
+    "clean": "yarn && find . | grep -v '^./node_modules' | git check-ignore --stdin | xargs -r rm",
+    "build:style.css": "uglifycss --max-line-len 160 style.css > style.min.css",
+    "build:bulma": "touch bulma.min.css && npm run build:index && uncss -s node_modules/bulma/css/bulma.css index.html | uglifycss --max-line-len 160 > bulma.min.css",
+    "build:style": "npm run build:style.css && npm run build:bulma",
+    "build:index": "pug index.pug",
+    "build": "npm run build:style && npm run build:index",
+    "watch": "nodemon -e css,pug --ignore \"*.min.css\" --exec \"redrun build\"",
+    "deploy": "npm build:style && pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
   }
 }
