@@ -1,3 +1,4 @@
 node_modules/
 index.html
-*.min.css
+style.css
+style.min.css

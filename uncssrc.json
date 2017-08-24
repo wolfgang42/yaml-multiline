@@ -1,0 +1,6 @@
+{
+    "stylesheets": ["style.css"],
+	"ignore": [
+		"/^\\.(when|yaml)-/"
+	]
+}
