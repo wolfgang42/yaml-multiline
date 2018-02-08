@@ -1,22 +1,27 @@
 form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-form
 	b Block Scalar Style (#[a(href="http://www.yaml.org/spec/1.2/spec.html#id2795688") ?])
-	.control
-		label.radio
+	.field
+		.control: label.radio
 			input(type="radio" name="blockstyle" value="folded" checked)
+			=' '
 			| Replace newlines with spaces #[em (folded)]
-		label.radio
+		.control: label.radio
 			input(type="radio" name="blockstyle" value="literal")
+			=' '
 			| Keep newlines #[em (literal)]
 	b Block Chomping (#[a(href="http://www.yaml.org/spec/1.2/spec.html#id2794534") ?])
-	.control
+	.field: .control
 		label.radio
 			input(type="radio" name="chomping" value="clip" checked)
+			=' '
 			| Single newline at end #[em (clip)]
 		label.radio
 			input(type="radio" name="chomping" value="strip")
+			=' '
 			| No newline at end #[em (strip)]
 		label.radio
 			input(type="radio" name="chomping" value="keep")
+			=' '
 			| All newlines from end #[em (keep)]
 	b Indentation
 	div(style="margin-left:0.5em")
@@ -24,9 +29,10 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 			='Indent by '
 			input(type="number" name="indent" min=1 max=9 step=1 value=2 style="width:4em")
 			=' spaces'
-		.control(style="margin-top:.25em")
+		.field: .control(style="margin-top:.25em")
 			label.checkbox
 				input(type="checkbox" name="indicateIndent")
+				=' '
 				| Include indentation indicator
 
 .column.is-one-half
