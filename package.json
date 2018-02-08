@@ -19,6 +19,6 @@
     "build:index": "pug index.pug",
     "build": "npm run build:style && npm run build:index",
     "watch": "nodemon -e scss,pug --exec \"redrun build\"",
-    "deploy": "npm build:style && pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
+    "deploy": "npm run build:style && pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
   }
 }
