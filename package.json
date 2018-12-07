@@ -6,6 +6,7 @@
     "bulma": "^0.6.2",
     "jstransformer-uglify-js": "^1.1.1",
     "node-sass": "^4.5.3",
+    "node-zopfli": "^2.0.2",
     "nodemon": "^1.11.0",
     "pug-cli": "^1.0.0-alpha6",
     "redrun": "^5.9.16",
@@ -19,6 +20,8 @@
     "build:index": "pug index.pug",
     "build": "npm run build:style && npm run build:index",
     "watch": "nodemon -e scss,pug --exec \"redrun build\"",
-    "deploy": "npm run build:style && pug -O '{production:true}' index.pug && scp index.html favicon.ico favicon-512.png yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
+    "compress:zopfli": "zopfli index.html favicon.ico favicon-512.png",
+    "compress": "npm run compress:zopfli",
+    "deploy": "npm run build:style && pug -O '{production:true}' index.pug && npm run compress && scp index.html* favicon.ico* favicon-512.png* yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
   }
 }
