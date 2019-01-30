@@ -3342,10 +3342,10 @@ uglify-to-browserify@~1.0.0:
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
   integrity sha1-bgkk1r2mta/jSeOabWMoUKD4grc=
 
-uglifycss@^0.0.27:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/uglifycss/-/uglifycss-0.0.27.tgz#53553b8115de26dce57b42ba0b34e88dd80d0cde"
-  integrity sha1-U1U7gRXeJtzle0K6CzTojdgNDN4=
+uglifycss@^0.0.29:
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/uglifycss/-/uglifycss-0.0.29.tgz#abe49531155d146e75dd2fdf933d371bc1180054"
+  integrity sha512-J2SQ2QLjiknNGbNdScaNZsXgmMGI0kYNrXaDlr4obnPW9ni1jljb1NeEVWAiTgZ8z+EBWP2ozfT9vpy03rjlMQ==
 
 uid-number@^0.0.6:
   version "0.0.6"

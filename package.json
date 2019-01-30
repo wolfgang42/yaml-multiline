@@ -10,7 +10,7 @@
     "nodemon": "^1.11.0",
     "pug-cli": "^1.0.0-alpha6",
     "redrun": "^5.9.16",
-    "uglifycss": "^0.0.27",
+    "uglifycss": "^0.0.29",
     "uncss": "^0.16.1"
   },
   "devDependencies": {},
