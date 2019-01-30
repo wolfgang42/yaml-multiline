@@ -56,3 +56,8 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 			+literal-n
 			span.when-folded=' '
 		| Several lines of text,#[+literal-n-space]with some "quotes" of various 'types',#[+literal-n-space]and also a blank line:#[+literal-n]#[+w]plus another line at the end.#[+w.when-keep.when-clip]#[+w.when-keep]#[+w.when-keep]
+
+script
+	include:uglify-js polyfills.js
+	='\n'
+	include script.js

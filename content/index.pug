@@ -20,10 +20,6 @@ html(lang="en")
 					.title YAML Multiline
 					.subtitle Find the right syntax for your YAML multiline strings
 		main.section.container.content: include article.pug
-		script
-			include:uglify-js polyfills.js
-			='\n'
-			include script.js
 		if production
 			script(type="text/javascript").
 				var _paq = _paq || [];
