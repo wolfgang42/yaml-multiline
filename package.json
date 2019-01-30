@@ -9,7 +9,7 @@
     "node-zopfli": "^2.0.2",
     "nodemon": "^1.11.0",
     "pug-cli": "^1.0.0-alpha6",
-    "redrun": "^5.9.16",
+    "redrun": "^7.1.1",
     "uglifycss": "^0.0.29",
     "uncss": "^0.16.1"
   },
