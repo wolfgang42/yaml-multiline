@@ -3,7 +3,7 @@
   "private": true,
   "description": "Find the right syntax for your YAML multiline strings",
   "dependencies": {
-    "bulma": "^0.6.2",
+    "bulma": "^0.7.2",
     "jstransformer-uglify-js": "^1.1.1",
     "node-sass": "^4.5.3",
     "node-zopfli": "^2.0.2",
