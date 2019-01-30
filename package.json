@@ -16,12 +16,12 @@
   "devDependencies": {},
   "scripts": {
     "clean": "yarn && find . | grep -v '^./node_modules' | git check-ignore --stdin | xargs -r rm",
-    "build:style": "touch style.min.css && npm run build:index && node-sass style.scss > style.css && uncss -u uncssrc.json index.html | uglifycss --max-line-len 160 > style.min.css",
-    "build:index": "pug index.pug",
+    "build:style": "touch content/style.min.css && npm run build:index && node-sass content/style.scss > content/style.css && uncss -u uncssrc.json content/index.html | uglifycss --max-line-len 160 > content/style.min.css",
+    "build:index": "pug content/index.pug",
     "build": "npm run build:style && npm run build:index",
     "watch": "nodemon -e scss,pug --exec \"redrun build\"",
-    "compress:zopfli": "zopfli index.html favicon.ico favicon-512.png",
+    "compress:zopfli": "zopfli content/index.html content/favicon.ico content/favicon-512.png",
     "compress": "npm run compress:zopfli",
-    "deploy": "npm run build:style && pug -O '{production:true}' index.pug && npm run compress && scp index.html* favicon.ico* favicon-512.png* yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
+    "deploy": "npm run build:style && pug -O '{production:true}' content/index.pug && npm run compress && scp content/index.html* content/favicon.ico* content/favicon-512.png* yaml-multiline.info:/srv/http-static/yaml-multiline.info/"
   }
 }
