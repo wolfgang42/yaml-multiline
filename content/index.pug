@@ -14,9 +14,10 @@ html(lang="en")
 		link(rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png")
 		link(rel="icon" type="image/png" href="/favicon-512.png" sizes="512x512")
 	body
-		header.hero.is-primary.is-bold: .hero-body
-			.container
-				h1
+		header.hero.is-primary.is-bold
+			.columns
+				#codefund
+				.hero-body.is-full: h1
 					.title YAML Multiline
 					.subtitle Find the right syntax for your YAML multiline strings
 		main.section.container.content: include article.pug
@@ -33,6 +34,10 @@ html(lang="en")
 					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 				})();
 			noscript: p: img(src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="")
+		script(
+				src="https://codefund.io/properties/532/funder.js?template=rectangle"
+				async="async"
+			)
 		footer.footer: .container: .content.has-text-centered
 			| &copy; 2017 #[a(href="http://www.linestarve.com/") Wolfgang Faust]
 			=' '

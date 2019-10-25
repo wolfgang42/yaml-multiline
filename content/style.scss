@@ -2,6 +2,11 @@ $body-size: 15px;
 @import "node_modules/bulma/bulma";
 
 .hero-body {margin-left: 2em; margin-right: 2em;}
+#codefund{margin-bottom: 3rem; margin: 1.5em; order: 1}
+#codefund+.hero-body{padding-top: 0}
+@include tablet {
+	#codefund+.hero-body{padding-top: 3rem}
+}
 .control label.radio {display:block;}
 .radio {margin-left: 0.5em;}
 .pre-header { font-weight: 100; font-size: large; }
