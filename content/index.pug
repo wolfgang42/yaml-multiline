@@ -14,9 +14,9 @@ html(lang="en")
 		link(rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png")
 		link(rel="icon" type="image/png" href="/favicon-512.png" sizes="512x512")
 	body
-		header.hero.is-primary.is-bold
-			.container: .columns
-				.hero-body.is-full: h1
+		header.hero.is-primary.is-bold: .hero-body
+			.container
+				h1
 					.title YAML Multiline
 					.subtitle Find the right syntax for your YAML multiline strings
 		main.section.container.content: include article.pug
