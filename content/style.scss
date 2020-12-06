@@ -65,3 +65,18 @@ header, footer {
 	-webkit-flex: 1 0 auto;
 	flex: 1 0 auto;
 }
+
+.ea-wrapper {margin: -2em -3em 1em -3em; float: right;}
+h1 {clear: right}
+@include from($tablet) {
+	.ea-wrapper{margin: -1.5rem 0 -3rem;}
+	h1 {clear: none}
+}
+.ea-content {
+	background: white !important;
+	background: rgba(255, 255, 255, 0.75) !important;
+}
+.ea-callout a {
+	color: white !important;
+	color: rgba(255, 255, 255, 0.9) !important;
+}
