@@ -16,7 +16,7 @@
   "devDependencies": {},
   "scripts": {
     "clean": "yarn && find . | grep -v '^./node_modules' | git check-ignore --stdin | xargs -r rm",
-    "build:style": "touch content/style.min.css && npm run build:index && node-sass content/style.scss > content/style.css && uncss -u uncssrc.json -i '.ea-content,.ea-callout a' content/index.html | uglifycss --max-line-len 160 > content/style.min.css",
+    "build:style": "touch content/style.min.css && npm run build:index && node-sass content/style.scss > content/style.css && uncss -u uncssrc.json content/index.html | uglifycss --max-line-len 160 > content/style.min.css",
     "build:index": "pug content/index.pug",
     "build": "npm run build:style && npm run build:index",
     "watch": "nodemon -e scss,pug --exec \"redrun build\"",
