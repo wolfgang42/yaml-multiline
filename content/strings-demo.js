@@ -17,7 +17,11 @@
 		}
 		indentIndication.innerHTML = form.elements.indent.value
 		var indents = document.getElementsByClassName('indent')
-		var indentation = '·'.repeat(form.elements.indent.value)
+		var indentCount = form.elements.indent.value
+		if (indentCount > 9 || indentCount <= 0) {
+			indentCount = 2
+		}
+		var indentation = '·'.repeat(indentCount)
 		for (var i = 0; i < indents.length; i++) {
 			indents[i].innerHTML = indentation
 		}
