@@ -20,6 +20,9 @@
 		var indentation = '·'.repeat(form.elements.indent.value)
 		for (var i = 0; i < indents.length; i++) {
 			indents[i].innerHTML = indentation
+			if(indents[i].classList.contains("indent-extra")) {
+				indents[i].innerHTML += '·'.repeat(2);
+			}
 		}
 	}
 	window.updateYamlDisplay = updateDisplay
