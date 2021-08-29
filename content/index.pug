@@ -16,12 +16,11 @@ html(lang="en")
 		script(async src="https://media.ethicalads.io/media/client/ethicalads.min.js")
 	body
 		header.hero.is-primary.is-bold: .hero-body
-			.container
-				.ea-wrapper.horizontal(data-ea-publisher="yaml-multiline-info" data-ea-type="image")
+			.container#header-container
 				h1
 					.title YAML Multiline
 					.subtitle Find the right syntax for your YAML multiline strings
-		main.section.container.content: include article.pug
+		main.section.container.content#main-container: include article.pug
 		if production
 			script(type="text/javascript").
 				var _paq = _paq || [];
@@ -35,6 +34,32 @@ html(lang="en")
 					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 				})();
 			noscript: p: img(src="//analytics.linestarve.com/piwik.php?idsite=4&rec=1" style="border:0;" alt="")
+		script.
+			;(function() {
+			// A/B test for Ethical Ads placement
+			var eap = window.localStorage.getItem('eap')
+			if (eap.length !== 1 || 'abcd'.indexOf(eap) === -1) {
+				eap = 'abcd'[Math.floor(Math.random() * 4)]
+				window.localStorage.setItem('eap', eap)
+			}
+			var ea = document.createElement('div')
+			ea.id = 'eap-'+eap
+			ea.classList.add('horizontal')
+			ea.dataset.eaType = 'image'
+			ea.dataset.eaPublisher = 'yaml-multiline-info'
+			if (eap === 'a' || eap === 'c') { // In header
+				ea.classList.add('eah-wrapper')
+				var ctr = document.getElementById('header-container')
+			} else if (eap === 'b' || eap === 'd') { // In main content
+				ea.classList.add('eam-wrapper')
+				var ctr = document.getElementById('main-container')
+			}
+			if (eap === 'c' || eap === 'd') { // With keywords
+				// Things someone might be doing with YAML
+				ea.dataset.eaKeywords = 'frontend|backend|devops|cloud|docker|kubernetes|containers|ansible|openshift|aws|azure|gcp|ci|cd|heroku'
+			}
+			ctr.insertBefore(ea, ctr.firstChild)
+			})()
 		footer.footer: .container: .content.has-text-centered
 			| &copy; 2017 #[a(href="https://www.wolfgangfaust.com/") Wolfgang Faust]
 			=' '

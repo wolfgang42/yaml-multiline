@@ -2,7 +2,6 @@
     "stylesheets": ["style.css"],
 	"ignore": [
 		"/^\\.(when|yaml)-/",
-		".ea-content",
-		".ea-callout a"
+		"/^\\.ea[hm]-wrapper/"
 	]
 }
