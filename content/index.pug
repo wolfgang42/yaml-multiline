@@ -38,7 +38,7 @@ html(lang="en")
 			;(function() {
 			// A/B test for Ethical Ads placement
 			var eap = window.localStorage.getItem('eap')
-			if (eap.length !== 1 || 'abcd'.indexOf(eap) === -1) {
+			if (!eap || eap.length !== 1 || 'abcd'.indexOf(eap) === -1) {
 				eap = 'abcd'[Math.floor(Math.random() * 4)]
 				window.localStorage.setItem('eap', eap)
 			}
