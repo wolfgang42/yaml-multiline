@@ -39,7 +39,16 @@ html(lang="en")
 			// A/B test for Ethical Ads placement
 			var eap = window.localStorage.getItem('eap')
 			if (!eap || eap.length !== 1 || 'abcd'.indexOf(eap) === -1) {
-				eap = 'abcd'[Math.floor(Math.random() * 4)]
+				// Manually-implemented hacky version of epsilon-greedy multi-armed bandit
+				if (Math.random() > 0.1) {
+					eap = 'b' // This one performs best, so pick it most of the time
+				} else {
+					// But also randomly pick the other ones, sometimes, so we can continue to gather stats
+					// (at a reduced rate) in case that turns out to have been a fluke.
+					// (I'm particularly perplexed as to why adding keywords to the inline ad seems to drop
+					// its performance to be identical to ads in the header regardless of keywords.)
+					eap = 'abcd'[Math.floor(Math.random() * 4)]
+				}
 				window.localStorage.setItem('eap', eap)
 			}
 			var ea = document.createElement('div')
