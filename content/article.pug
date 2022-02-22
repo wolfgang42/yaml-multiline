@@ -7,7 +7,7 @@ p.
 h2.is-2#block-scalars Block Scalars
 p A block scalar header has three parts:
 p.
-	#[strong Block Style Indicator]: The #[em: a(href="https://yaml.org/spec/1.2/spec.html#id2795688") block style] indicates
+	#[strong Block Style Indicator]: The #[em: a(href="https://yaml.org/spec/1.2.2/#812-literal-style") block style] indicates
 	how newlines inside the block should behave.
 	If you would like them to be kept as newlines, use the #[strong literal]
 	style, indicated by a pipe (#[code |]).
@@ -17,7 +17,7 @@ p.
 	Lines with extra indentation are also not folded.)
 p.
 	#[strong Block Chomping Indicator]:
-	The #[em: a(href="https://yaml.org/spec/1.2/spec.html#id2794534") chomping indicator] controls what should happen with newlines
+	The #[em: a(href="https://yaml.org/spec/1.2.2/#8112-block-chomping-indicator") chomping indicator] controls what should happen with newlines
 	at the #[em end] of the string.
 	The default, #[strong clip], puts a single newline at the end of the string.
 	To remove all newlines, #[strong strip] them by putting a minus sign (#[code -])
@@ -27,7 +27,7 @@ p.
 p.
 	#[strong Indentation Indicator]: Ordinarily, the number of spaces you're using to indent a block
 	will be automatically guessed from its first line.
-	You may need a #[em: a(href="https://yaml.org/spec/1.2/spec.html#id2793979") block indentation indicator]
+	You may need a #[em: a(href="https://yaml.org/spec/1.2.2/#8111-block-indentation-indicator") block indentation indicator]
 	if the first line of the block starts with extra spaces.
 	In this case, simply put the number of spaces used for indentation (between 1 and 9)
 	at the end of the header.
