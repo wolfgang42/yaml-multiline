@@ -43,6 +43,9 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 		#[span.whitespace.indent ··]with some "quotes" of various 'types',#[span.whitespace \n]
 		#[span.whitespace.indent ··]and also a blank line:#[span.whitespace \n]
 		#[span.whitespace.indent ··]#[span.whitespace \n]
+		#[span.whitespace.indent ··]and some text with#[span.whitespace \n]
+		#[span.whitespace.indent.indent-extra ··]extra indentation#[span.whitespace \n]
+		#[span.whitespace.indent ··]on the next line,#[span.whitespace \n]
 		#[span.whitespace.indent ··]plus another line at the end.#[span.whitespace \n]
 		#[span.whitespace.indent ··]#[span.whitespace \n]
 		#[span.whitespace.indent ··]#[span.whitespace \n]
@@ -55,7 +58,10 @@ form(onsubmit="updateYamlDisplay(); return false").column.is-one-half#control-fo
 		mixin literal-n-space
 			+literal-n
 			span.when-folded=' '
-		| Several lines of text,#[+literal-n-space]with some "quotes" of various 'types',#[+literal-n-space]and also a blank line:#[+literal-n]#[+w]plus another line at the end.#[+w.when-keep.when-clip]#[+w.when-keep]#[+w.when-keep]
+		mixin ws
+			+w
+			span.whitespacee='  '
+		| Several lines of text,#[+literal-n-space]with some "quotes" of various 'types',#[+literal-n-space]and also a blank line:#[+literal-n]#[+w]and some text with#[+ws]extra indentation#[+w]on the next line,#[+literal-n-space]plus another line at the end.#[+w.when-keep.when-clip]#[+w.when-keep]#[+w.when-keep]
 
 script
 	include:uglify-js polyfills.js
