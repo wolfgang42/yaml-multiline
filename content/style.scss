@@ -2,6 +2,7 @@
 @use "../node_modules/bulma/sass/utilities/initial-variables";
 @use "../node_modules/bulma/sass/utilities/mixins";
 
+.container {width: 100%}
 .hero-body {margin-left: 2em; margin-right: 2em;}
 .control label.radio {display:block;}
 .radio {margin-left: 0.5em;}
@@ -12,7 +13,7 @@ a:hover {text-decoration: underline;}
 .whitespace {color: lightgray;}
 p { text-indent: -2em; margin-left: 2em; }
 /* TODO noto mono */
-pre {background-color: white; font-size: 1em; font-family: "Consolas", "Inconsolata", "Monaco", "Ubuntu Mono", monospace;}
+pre {background-color: white; font-size: 1em; font-family: "Consolas", "Inconsolata", "Monaco", "Ubuntu Mono", monospace; overflow-x: auto}
 .content pre {padding: 0;}
 .pre-wrap {white-space: pre-wrap !important;}
 @keyframes yellowfade {
