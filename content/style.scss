@@ -1,5 +1,6 @@
-$body-size: 15px;
-@import "node_modules/bulma/bulma";
+@use "../node_modules/bulma/bulma" with ($body-size: 15px);
+@use "../node_modules/bulma/sass/utilities/initial-variables";
+@use "../node_modules/bulma/sass/utilities/mixins";
 
 .hero-body {margin-left: 2em; margin-right: 2em;}
 .control label.radio {display:block;}
@@ -69,7 +70,7 @@ header, footer {
 .eah-wrapper {margin: -2em -3em 1em -3em; float: right;}
 .eam-wrapper {margin: -3em auto 0 auto; display: block !important; text-align: center}
 h1 {clear: right}
-@include from($tablet) {
+@include mixins.from(initial-variables.$tablet) {
 	.eah-wrapper{margin: -1.5rem 0 -3rem;}
 	.eam-wrapper {margin: -3em 0 0 1em; float: right}
 	h1 {clear: none}
