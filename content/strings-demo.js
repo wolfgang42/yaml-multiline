@@ -20,6 +20,7 @@
 		var indentCount = form.elements.indent.value
 		if (indentCount > 9 || indentCount <= 0) {
 			indentCount = 2
+			form.elements.indent.value = indentCount
 		}
 		var indentation = '·'.repeat(indentCount)
 		for (var i = 0; i < indents.length; i++) {
