@@ -1,9 +1,104 @@
+h2 Two Types of Formats for Strings
 p.
-	There are two types of formats that YAML supports for strings: #[em block scalar] and #[em flow scalar] formats.
-	(#[em Scalars] are what #[abbr YAML] calls basic values like numbers or strings,
-	as opposed to complex types like arrays or objects.)
-	Block scalars have more control over how they are interpreted,
-	whereas flow scalars have more limited escaping support.
+	There are two types of formats that YAML supports for scalar strings.
+	(#[em Scalars] are what YAML calls basic values like numbers or strings, as opposed to complex types like arrays or objects.)
+ul
+	li #[strong Flow scalar formats] are designed for robust simplicity but do have a limited escaping and line-break support. They are designed to ignore indentations.
+	li #[strong Block scalar formats] provide more control over how they are interpreted by increasing sensitivity rules regarding indentations and escaping. These are designed to answer for cases whenever scalar flow formats become cumbersome or insufficient.
+p.
+	Although they are parsed by different rules, they all express strings, allowing authors to choose the option that expresses best what they need the string to be.
+
+h2.is-2#flow-scalars Flow Scalars
+h3.is-3#flow-scalars-single Single-quoted
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span(style="color:#268bd2") example:] #[span.syntax-quote ']A simple string.#[span.syntax-quote ']
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			A simple string.
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span(style="color:#268bd2") example:] #[span.syntax-quote ']Several lines of text,#[span.whitespace \n]
+			#[span.whitespace ··]containing #[span.syntax-escape '']single quotes#[span.syntax-escape '']. Escapes (like \n) don#[span.syntax-escape '']t do anything.#[span.whitespace \n]
+			#[span.whitespace ··]#[span.whitespace \n]
+			#[span.whitespace ··]Newlines can be added by leaving a blank line.#[span.whitespace \n]
+			#[span.whitespace ····]Leading whitespace on lines is ignored.#[span.syntax-quote ']#[span.whitespace \n]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			Several lines of text, containing 'single quotes'. Escapes (like \n) don't do anything.#[span.whitespace \n]
+			Newlines can be added by leaving a blank line. Leading whitespace on lines is ignored.
+h3.is-3#flow-scalars-double Double-quoted
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span(style="color:#268bd2") example:] #[span.syntax-quote "]A simple string.#[span.syntax-quote "]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			A simple string.
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span.syntax-keyword example:] #[span.syntax-quote "]Several lines of text,#[span.whitespace \n]
+			#[span.whitespace ··]containing #[span.syntax-escape \"]double quotes#[span.syntax-escape \"]. Escapes (like #[span.syntax-escape \\]n) work.#[span.syntax-escape \n]In addition,#[span.whitespace \n]
+			#[span.whitespace ··]newlines can be esc#[span.syntax-escape &#x5C;]#[span.whitespace \n]
+			#[span.whitespace ··]aped to prevent them from being converted to a space.#[span.whitespace \n]
+			#[span.whitespace ··]#[span.whitespace \n]
+			#[span.whitespace ··]Newlines can also be added by leaving a blank line.#[span.whitespace \n]
+			#[span.whitespace ····]Leading whitespace on lines is ignored.#[span.syntax-quote "]#[span.whitespace \n]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			Several lines of text, containing "double quotes". Escapes (like \n) work.#[span.whitespace \n]
+			In addition, newlines can be escaped to prevent them from being converted to a space.#[span.whitespace \n]
+			Newlines can also be added by leaving a blank line. Leading whitespace on lines is ignored.#[span.whitespace \n]
+h3.is-3#flow-scalars-plain Plain
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span(style="color:#268bd2") example:] A simple string.
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			A simple string.
+.columns
+	.column.is-one-half
+		.pre-header YAML
+		pre.
+			#[span.syntax-keyword example:] Several lines of text,#[span.whitespace \n]
+			#[span.whitespace ··]with some "quotes" of various 'types'.#[span.whitespace \n]
+			#[span.whitespace ··]Escapes (like \n) don't do anything.#[span.whitespace \n]
+			#[span.whitespace ··]#[span.whitespace \n]
+			#[span.whitespace ··]Newlines can be added by leaving a blank line.#[span.whitespace \n]
+			#[span.whitespace ····]Additional leading whitespace is ignored.#[span.whitespace \n]
+	.column.is-one-half
+		.pre-header Result
+		pre.pre-wrap.
+			Several lines of text, with some "quotes" of various 'types'. Escapes (like \n) don't do anything.#[span.whitespace \n]
+			Newlines can be added by leaving a blank line. Additional leading whitespace is ignored.
+p.
+	⚠️ Plain flow scalars (unquoted strings) have several pitfalls:
+ul
+	li.
+		Plain flow scalars are picky about the #[code :] and #[code #] characters.
+		They can be in the string,
+		but #[code :] cannot appear #[em before] a space or newline,
+		and #[code #] cannot appear #[em after] a space or newline;
+		doing this will cause a syntax error.
+	li Parsers which support YAML 1.1 may interpret the strings `y`, `n`, `yes`, `no`, `on`, and `off` (case-insensitive) as boolean values rather than strings.
+	li Leading and trailing whitespace will be removed.
+p.
+	If your strings are affected by any of these caveats you should use one of the quoted styles instead.
+
 h2.is-2#block-scalars Block Scalars
 p A block scalar header has three parts:
 p.
@@ -34,63 +129,3 @@ p.
 
 h3.is-3 Demo
 .columns: include strings-demo.pug
-
-h2.is-2#flow-scalars Flow Scalars
-h3.is-3#flow-scalars-single Single-quoted
-.columns
-	.column.is-one-half
-		.pre-header YAML
-		pre.
-			#[span(style="color:#268bd2") example:] #[span.syntax-quote ']Several lines of text,#[span.whitespace \n]
-			#[span.whitespace ··]containing #[span.syntax-escape '']single quotes#[span.syntax-escape '']. Escapes (like \n) don#[span.syntax-escape '']t do anything.#[span.whitespace \n]
-			#[span.whitespace ··]#[span.whitespace \n]
-			#[span.whitespace ··]Newlines can be added by leaving a blank line.#[span.whitespace \n]
-			#[span.whitespace ····]Leading whitespace on lines is ignored.#[span.syntax-quote ']#[span.whitespace \n]
-	.column.is-one-half
-		.pre-header Result
-		pre.pre-wrap.
-			Several lines of text, containing 'single quotes'. Escapes (like \n) don't do anything.#[span.whitespace \n]
-			Newlines can be added by leaving a blank line. Leading whitespace on lines is ignored.
-h3.is-3#flow-scalars-double Double-quoted
-.columns
-	.column.is-one-half
-		.pre-header YAML
-		pre.
-			#[span.syntax-keyword example:] #[span.syntax-quote "]Several lines of text,#[span.whitespace \n]
-			#[span.whitespace ··]containing #[span.syntax-escape \"]double quotes#[span.syntax-escape \"]. Escapes (like #[span.syntax-escape \\]n) work.#[span.syntax-escape \n]In addition,#[span.whitespace \n]
-			#[span.whitespace ··]newlines can be esc#[span.syntax-escape &#x5C;]#[span.whitespace \n]
-			#[span.whitespace ··]aped to prevent them from being converted to a space.#[span.whitespace \n]
-			#[span.whitespace ··]#[span.whitespace \n]
-			#[span.whitespace ··]Newlines can also be added by leaving a blank line.#[span.whitespace \n]
-			#[span.whitespace ····]Leading whitespace on lines is ignored.#[span.syntax-quote "]#[span.whitespace \n]
-	.column.is-one-half
-		.pre-header Result
-		pre.pre-wrap.
-			Several lines of text, containing "double quotes". Escapes (like \n) work.#[span.whitespace \n]
-			In addition, newlines can be escaped to prevent them from being converted to a space.#[span.whitespace \n]
-			Newlines can also be added by leaving a blank line. Leading whitespace on lines is ignored.#[span.whitespace \n]
-h3.is-3#flow-scalars-plain Plain
-.columns
-	.column.is-one-half
-		.pre-header YAML
-		pre.
-			#[span.syntax-keyword example:] Several lines of text,#[span.whitespace \n]
-			#[span.whitespace ··]with some "quotes" of various 'types'.#[span.whitespace \n]
-			#[span.whitespace ··]Escapes (like \n) don't do anything.#[span.whitespace \n]
-			#[span.whitespace ··]#[span.whitespace \n]
-			#[span.whitespace ··]Newlines can be added by leaving a blank line.#[span.whitespace \n]
-			#[span.whitespace ····]Additional leading whitespace is ignored.#[span.whitespace \n]
-	.column.is-one-half
-		.pre-header Result
-		pre.pre-wrap.
-			Several lines of text, with some "quotes" of various 'types'. Escapes (like \n) don't do anything.#[span.whitespace \n]
-			Newlines can be added by leaving a blank line. Additional leading whitespace is ignored.
-p.
-	#[em Note: ]
-	Plain flow scalars are picky about the #[code :] and #[code #] characters.
-	They can be in the string,
-	but #[code :] cannot appear #[em before] a space or newline,
-	and #[code #] cannot appear #[em after] a space or newline;
-	doing this will cause a syntax error.
-	If you need to use these characters you are probably better off
-	using one of the quoted styles instead.
