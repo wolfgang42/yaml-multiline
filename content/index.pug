@@ -17,11 +17,12 @@ html(lang="en")
 	body
 		header.hero.is-primary.is-bold: .hero-body
 			.container
-				.ea-wrapper.horizontal(data-ea-publisher="yaml-multiline-info" data-ea-type="image")
 				h1
 					.title YAML Multiline
 					.subtitle Find the right syntax for your YAML multiline strings
-		main.section.container.content: include article.pug
+		main.section.container.content
+			.ea-wrapper.horizontal(data-ea-publisher="yaml-multiline-info" data-ea-type="image")
+			include article.pug
 		if production
 			script(type="text/javascript").
 				var _paq = _paq || [];

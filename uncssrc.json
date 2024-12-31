@@ -1,8 +1,6 @@
 {
     "stylesheets": ["style.css"],
 	"ignore": [
-		"/^\\.(when|yaml)-/",
-		".ea-content",
-		".ea-callout a"
+		"/^\\.(when|yaml)-/"
 	]
 }
