@@ -68,19 +68,17 @@ header, footer {
 	flex: 1 0 auto;
 }
 
-.eah-wrapper {margin: -2em -3em 1em -3em; float: right;}
-.eam-wrapper {margin: -3em auto 0 auto; display: block !important; text-align: center}
+.ea-wrapper {margin: -2em -3em 1em -3em; float: right;}
 h1 {clear: right}
 @include mixins.from(initial-variables.$tablet) {
-	.eah-wrapper{margin: -1.5rem 0 -3rem;}
-	.eam-wrapper {margin: -3em 0 0 1em; float: right}
+	.ea-wrapper{margin: -1.5rem 0 -3rem;}
 	h1 {clear: none}
 }
-.eah-wrapper .ea-content {
+.ea-content {
 	background: white !important;
 	background: rgba(255, 255, 255, 0.75) !important;
 }
-.eah-wrapper .ea-callout a {
+.ea-callout a {
 	color: white !important;
 	color: rgba(255, 255, 255, 0.9) !important;
 }
