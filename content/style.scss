@@ -10,7 +10,7 @@
 a {color: #0099cf;}
 a:visited {color: #cf4fcf;}
 a:hover {text-decoration: underline;}
-.whitespace {color: lightgray;}
+.whitespace {color: lightgray;user-select: none; -webkit-user-select: none;}
 p { text-indent: -2em; margin-left: 2em; }
 /* TODO noto mono */
 pre {background-color: white; font-size: 1em; font-family: "Consolas", "Inconsolata", "Monaco", "Ubuntu Mono", monospace; overflow-x: auto}
